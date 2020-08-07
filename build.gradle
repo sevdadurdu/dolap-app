@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.sevdadurdu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax.persistence', name: 'javax.persistence-api'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-engine'
+    testCompile group: 'org.mockito', name: 'mockito-junit-jupiter'  //mockito-core is implicitly added
+    testCompile group: 'org.junit.vintage', name: 'junit-vintage-engine'  //for JUnit 4.12 test execution, if needed
+    testCompile group: 'org.assertj' , name: 'assertj-core'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+bootJar {
+    baseName = 'dolap-app'
+    version = project.version
+}
+
+
